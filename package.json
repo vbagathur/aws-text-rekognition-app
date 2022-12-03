@@ -1,0 +1,19 @@
+{
+  "name": "aws-text-recognition-app",
+  "version": "1.0.0",
+  "description": "text recognition using aws services",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "viswanath natarajan",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/lib-dynamodb": "^3.222.0",
+    "aws-sdk": "^2.1265.0",
+    "dotenv": "^16.0.3",
+    "formidable": "^2.1.1",
+    "fs": "^0.0.1-security",
+    "inspector": "^0.5.0"
+  }
+}
