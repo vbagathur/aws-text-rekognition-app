@@ -36,7 +36,7 @@ const getItem = async () => {
     const params = {
       TableName: TABLE_NAME,
       Key: {
-        "receipt-id": "vishreceipt2"
+        "receipt-id": "vishreceipt3"
       },
     };
     try {
@@ -54,8 +54,8 @@ const putItem = async () => {
     const params = {
         TableName: TABLE_NAME,
         Item: {
-            "receipt-id": "vishreceipt2",
-            "file": "vishreceipt2.png"
+            "receipt-id": "vishreceipt3",
+            "file": "vishreceipt3.png"
         },
         };
     try {

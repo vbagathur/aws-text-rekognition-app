@@ -11,6 +11,14 @@ const s3 = new AWS.S3({
     region: process.env.REGION_NAME
 });
 
+const getFileStream = (fileKey) => {
+    const downloadParams = {
+    Key: fileKey,
+    Bucket: bucket,
+  };
+  return s3.getObject(downloadParams).createReadStream();
+}
+
 const uploadFile = (fileName) => {
     // Read content from the file
     const fileContent = fs.readFileSync(fileName);
@@ -30,8 +38,8 @@ const uploadFile = (fileName) => {
         console.log(`File uploaded successfully. ${data.Location}`);
     });
 };
-
-if (!getFileStream(photo)) {
+const status = getFileStream(photo);
+if (status) {
     uploadFile(photo);
 } else {
     console.log(`file ${photo} already exists`);

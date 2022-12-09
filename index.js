@@ -67,14 +67,18 @@ http.createServer(function (req, res) {
                             //Send a File Upload confirmation message
                             res.write('File Upload Success! ('+newpath+')');
                             res.end();
-                            return;
+                            // return;
                         });
 
+
                         //recognize receipt
-                        await recognizeReceipt(userId,receiptNo,newpath).catch((error) => {
-                            console.error("An error occurred:", error);
-                            process.exit(1);
-                        });
+                        setTimeout(() => {
+                            console.log("Delayed for 3 seconds to upload file completely.");
+                            recognizeReceipt(userId,receiptNo,newpath).catch((error) => {
+                                console.error("An error occurred:", error);
+                                process.exit(1);
+                            });
+                        }, "3000")
 
                     } else {
                         res.write('File Upload Failed!');
@@ -99,7 +103,7 @@ http.createServer(function (req, res) {
             console.log("receiptNo: "+receiptNo);
 
             //Parameters validation
-            if (userId.trim().length===0||receiptNo.trim().length===0) {
+            if (userId?.trim().length===0||receiptNo?.trim().length===0) {
                     res.write('Check Status Failed due to invalid parameters!');
                     res.end();
                     return;
